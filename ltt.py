@@ -33,7 +33,7 @@ def generate_table(inputs):
 
     # Variable names row
     name_str = ' & '.join(vars+results)
-    name_str += r' \\'
+    name_str += r' \\ \hline'
     body.append(name_str)
 
     # Variable values rows
