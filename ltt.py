@@ -21,20 +21,22 @@ def main():
 def generate_table(inputs):
     vars = list(inputs.variables)
     results = list(inputs.results)
+    num_cols = len(vars)+len(results)
 
     # Calculate table header/footer
-    header = r"\begin{tabular}{||} \hline" #TODO
+    col_spec = "|{}|".format('|'.join(['c']*num_cols))
+    header = r"\begin{{tabular}}{{{}}} \hline".format(col_spec)
     footer = r"\hline \end{tabular}"
 
     # Calculate table body
     body = list()
 
-    # Variable names
+    # Variable names row
     name_str = ' & '.join(vars+results)
     name_str += r' \\'
     body.append(name_str)
 
-    # Variable values
+    # Variable values rows
     for row in itertools.product((true_str, false_str), repeat=len(vars)):
         row = list(row) + [placeholder_str]*len(results)
         row_str = ' & '.join(row)+r' \\'
