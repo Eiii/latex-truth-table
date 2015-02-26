@@ -10,7 +10,7 @@ def main():
     # incorrectly
     args = argparse.ArgumentParser(
             description="Generates a latex truth table",
-            usage='%(prog)s [-h] var [var ...] [-s P [P ...]]')
+            usage='%(prog)s [-h] var [var ...] [-r [P ...]]')
     args.add_argument('variables', nargs='+', metavar='var',
                       help="Input variables to include in the truth table")
     args.add_argument('-r', '--results', nargs='*', metavar='P', default='X',
